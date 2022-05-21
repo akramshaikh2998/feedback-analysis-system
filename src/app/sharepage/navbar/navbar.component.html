@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(0, 255, 247);">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="">FEEDBACK ANALYSIS SYSTEM</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" routerLink="" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:true}">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" routerLink="gallery" routerLinkActive="active-link" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Gallery
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" routerLink="infrastructure" routerLinkActive="active-link">Infrastructure</a></li>
+              <li><a class="dropdown-item" routerLink="Seminar" routerLinkActive="active-link">Seminar</a></li>
+              <li><a class="dropdown-item" routerLink="student" routerLinkActive="active-link">Student Function</a></li>
+              <li><a class="dropdown-item" routerLink="annual" routerLinkActive="active-link">Annual Function</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="about" routerLinkActive="active-link">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="contact" routerLinkActive="active-link">Contact Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="login" routerLinkActive="active-link">Login</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>

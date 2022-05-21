@@ -1,28 +1,33 @@
-var express = require('express');
-var mongoose = require('mongoose');
-var bodyParser = require('body-parser');
-var homeRouter = require('./routers/homeRouter')
-// var port  = process.env.port || 8080;
+const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const homeRouter = require('./app/routers/homeRouter')
+const port  = process.env.port || 8080;
 
-var app  = express();
+const app = express();
 
-// db con
+mongoose.connect('mongodb://localhost:27017/studentsdata', { useNewUrlParser: true }, (error) => {
+    if (error) {
+        console.log(error);
+    }
 
-mongoose.connect('mongodb://localhost:27017/studentsdata',{useNewUrlParser:true})
-var db = mongoose.connection;
+    const db = mongoose.connection;
 
-db.on("error",()=>{console.log("error in conection");})
-db.once('open',()=>{console.log("Connected");})
+    db.on("error", () => { console.log("error in conection"); })
+    db.once('open', () => { console.log("Connected"); })
 
-app.set('login engine','ejs')
+    app.set('login engine', 'ejs')
 
-app.use(express.static('public'))
+    app.use(express.static('public'))
 
-app.use(bodyParser.urlencoded({ extended: false }))
+    app.use(bodyParser.urlencoded({ extended: false }))
 
-// parse application/json
-app.use(bodyParser.json())
+    // parse application/json
+    app.use(bodyParser.json())
 
-app.use('/', homeRouter)
+    app.use('/', homeRouter)
 
-// app.listen(port)
+    app.listen(port,() => {
+        console.log("Server is running")
+    })
+})

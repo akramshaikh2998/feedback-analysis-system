@@ -1,12 +1,8 @@
-var express = require('express');
-var Router = express.Router();
-var homeSchema = require('../../models/homeSchema');
+const express = require('express');
+const Router = express.Router();
+const homeSchema = require('../../backend/models/homeSchema');
 
-Router.get('/', (err, res) => {
-    res.render('register', { title: 'Fill Form', password: '', email: '' })
-})
-
-Router.post('/register', async (req, res) => {
+async function registerUser(req,res) {
     try {
         const {
             name,
@@ -46,7 +42,13 @@ Router.post('/register', async (req, res) => {
 
         res.render('register', { title: 'Error in Code', password: '', email: '' })
     }
+} 
+
+Router.get('/', (err, res) => {
+    res.render('register', { title: 'Fill Form', password: '', email: '' })
 })
+
+Router.post('/register', registerUser)
 
 // singin 
 

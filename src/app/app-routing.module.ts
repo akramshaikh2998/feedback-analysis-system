@@ -9,6 +9,12 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { GalleryComponent } from './pages/gallery/gallery.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
+import { CollegeComponent } from 'src/forms/college/college.component';
+import { InductionComponent } from 'src/forms/induction/induction.component';
+import { IndustrialComponent } from 'src/forms/industrial/industrial.component';
+import { LecturesComponent } from 'src/forms/lectures/lectures.component';
+import { PracticalComponent } from 'src/forms/practical/practical.component';
+import { SeminarformComponent } from 'src/forms/seminarform/seminarform.component';
 
 
 const routes: Routes = [
@@ -21,7 +27,12 @@ const routes: Routes = [
 {path:'infrastructure',component:InfrastructureComponent},
 {path:'Seminar',component:SeminarComponent},
 {path:'student',component:StudentComponent},
-
+{path: 'college',component:CollegeComponent},
+{path:'induction',component:InductionComponent},
+{path:'industrial',component:IndustrialComponent},
+{path:'lectures',component:LecturesComponent},
+{path:'practical',component:PracticalComponent},
+{path:'seminarform',component:SeminarformComponent}
 ];
 
 @NgModule({

@@ -1,8 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const homeRouter = require('./app/routers/homeRouter')
-const port  = process.env.port || 8080;
+const homeRouter = require('./backend/routers/homeRouter')
+const port = process.env.port || 8080;
 
 const app = express();
 
@@ -27,7 +27,7 @@ mongoose.connect('mongodb://localhost:27017/studentsdata', { useNewUrlParser: tr
 
     app.use('/', homeRouter)
 
-    app.listen(port,() => {
+    app.listen(port, () => {
         console.log("Server is running")
     })
 })

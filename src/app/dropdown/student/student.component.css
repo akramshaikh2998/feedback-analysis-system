@@ -1,0 +1,15 @@
+h1
+{
+    text-align: center;
+    background-color: lightblue;
+    font-weight: bold;
+}
+.imgs{
+
+   padding: 10px;
+   margin: 10px 10px;
+   border: 10px 10px;
+   outline-style: solid;
+  outline-color: red;
+  outline-width: thin;
+}

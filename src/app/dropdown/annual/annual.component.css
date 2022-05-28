@@ -5,7 +5,13 @@ h1
     font-weight: bold;
 }
 
-.imgs
-{
-    width: 20%;
-}
+
+    .imgs{
+    
+       padding: 10px;
+       margin: 10px 10px;
+       border: 10px 10px;
+       outline-style: solid;
+      outline-color: red;
+      outline-width: thin;
+    }

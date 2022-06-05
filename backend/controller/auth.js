@@ -2,7 +2,7 @@ const User = require("../models/User");
 
 async function register(req, res) {
   try {
-    const { name, number, email, password, cpassword } = req.body;
+    const { name, number, email, branch, password, cpassword } = req.body;
 
     if (password !== cpassword) {
       res.json({ ok: false });
@@ -12,6 +12,7 @@ async function register(req, res) {
       name,
       number,
       email,
+      branch,
       password,
     });
 

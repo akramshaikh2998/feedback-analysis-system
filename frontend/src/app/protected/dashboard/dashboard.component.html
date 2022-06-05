@@ -1,0 +1,32 @@
+<!-- <p>Protected Dashboard works.</p> -->
+
+<!-- <a [routerLink]="['../../public/login']">Logout</a>
+<br>
+<a [routerLink]="['../../public/register']">Go back to Register</a>
+<br>
+<br> -->
+<button mat-raised-button (click)="logout()">Logout</button>
+
+<h1>Welcome to Feedback forms</h1>
+<!-- 
+      <a href="../../../forms/college/college.component.html">college Feedback Form</a>
+      <a href="../../../forms/induction/induction.component.html">Induction Feedback Form</a>
+      <a href="../../../forms/industrial/industrial.component.html">Industrial Feedback Form</a>
+      <a href="../../../forms/lectures/lectures.component.html">Lectures Feedback Form</a>
+      <a href="../../../forms/practical/practical.component.html">Practical Feedback Form</a>
+      <a href="../../../forms/seminarform/seminarform.component.html">Seminar Feedback Form</a>
+ -->
+
+<a class="nav-link dropdown-toggle" routerLink="Feedbackform" routerLinkActive="active-link" id="navbarDropdownMenuLink"
+    role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Feedback Forms available here
+</a>
+<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+    <li><a class="dropdown-item" routerLink="../../forms/college/college.component.html"
+            routerLinkActive="active-link">College</a>
+    </li>
+    <li><a class="dropdown-item" routerLink="Seminar" routerLinkActive="active-link">Seminar</a></li>
+    <li><a class="dropdown-item" routerLink="student" routerLinkActive="active-link">Student Function</a></li>
+    <li><a class="dropdown-item" routerLink="annual" routerLinkActive="active-link">Annual Function</a></li>
+</ul>
+<a href="../../forms/college/college.component.html"> College</a>

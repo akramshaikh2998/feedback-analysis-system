@@ -1,0 +1,49 @@
+<button mat-raised-button (click)="logout()">Logout</button>
+
+<mat-radio-group>
+    <h1>Welcome to Feedback form</h1>
+
+    <h3>Kindly give feedback about Induction</h3>
+
+    <mat-label>Choose a date</mat-label>
+    <input matInput [matDatepicker]="picker">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+
+    <mat-label>a) Provide feedback about the college environmental</mat-label>
+    <mat-radio-button value="01">01</mat-radio-button>
+    <mat-radio-button value="02">02</mat-radio-button>
+    <mat-radio-button value="03">03</mat-radio-button>
+    <mat-radio-button value="04">04</mat-radio-button>
+    <mat-radio-button value="05">05</mat-radio-button>
+
+
+<mat-label>b) Provide feedback about Canteen</mat-label>
+<mat-radio-button value="01">01</mat-radio-button>
+<mat-radio-button value="02">02</mat-radio-button>
+<mat-radio-button value="03">03</mat-radio-button>
+<mat-radio-button value="04">04</mat-radio-button>
+<mat-radio-button value="05">05</mat-radio-button>
+
+<mat-label>c) Provide feedback about the class room</mat-label>
+<mat-radio-button value="01">01</mat-radio-button>
+<mat-radio-button value="02">02</mat-radio-button>
+<mat-radio-button value="03">03</mat-radio-button>
+<mat-radio-button value="04">04</mat-radio-button>
+<mat-radio-button value="05">05</mat-radio-button>
+
+<mat-label>d)Provide Feedback about washroom</mat-label>
+<mat-radio-button value="01">01</mat-radio-button>
+<mat-radio-button value="02">02</mat-radio-button>
+<mat-radio-button value="03">03</mat-radio-button>
+<mat-radio-button value="04">04</mat-radio-button>
+<mat-radio-button value="05">05</mat-radio-button>
+
+<mat-label>e) Provide feedback about overall college </mat-label>
+<mat-radio-button value="01">01</mat-radio-button>
+<mat-radio-button value="02">02</mat-radio-button>
+<mat-radio-button value="03">03</mat-radio-button>
+<mat-radio-button value="04">04</mat-radio-button>
+<mat-radio-button value="05">05</mat-radio-button>
+</mat-radio-group>

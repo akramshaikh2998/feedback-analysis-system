@@ -15,6 +15,10 @@ var userSchema = new schema({
     unique: true,
     required: true,
   },
+  branch: {
+    type: String,
+    required: true,
+  },
   password: {
     type: String,
     required: true,

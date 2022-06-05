@@ -8,6 +8,7 @@ function register() {
       name: Joi.string().required(),
       number: Joi.number().required(),
       email: Joi.string().email().required(),
+      branch: Joi.string().required(),
       password: Joi.string().regex(passwordRegex).required(),
       confirmPassword: Joi.string().regex(passwordRegex).required(),
     }),

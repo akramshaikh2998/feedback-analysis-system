@@ -1,4 +1,3 @@
-
 /*
 Interface for the Refresh Token (can look different, based on your backend api)
 */
@@ -27,22 +26,16 @@ export interface LoginRequest {
   password: string;
 }
 
-/*
-Interface for the Register Request (can look different, based on your backend api)
-*/
-export interface RegisterRequest {
+export type RegisterRequest = {
+  name: string;
+  number: number;
   email: string;
-  username: string;
-  firstname: string;
-  lastname: string;
-  branchname: string;
   password: string;
-}
+  confirmPassword: string;
+  branch: string;
+};
 
-/*
-Interface for the Register Response (can look different, based on your backend api)
-*/
-export interface RegisterResponse {
-  status: number;
-  message: string;
-}
+export type RegisterResponse = {
+  ok: boolean;
+  error?: string;
+};

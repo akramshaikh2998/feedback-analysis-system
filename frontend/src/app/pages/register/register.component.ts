@@ -8,36 +8,30 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
-
   registerForm = new FormGroup({
     email: new FormControl(null, [Validators.required, Validators.email]),
-    username: new FormControl(null, [Validators.required]),
-    firstname: new FormControl(null, [Validators.required]),
-    lastname: new FormControl(null, [Validators.required]),
-    branchname: new FormControl(null, [Validators.required]),    
+    name: new FormControl(null, [Validators.required]),
+    number: new FormControl(null, [Validators.required]),
+    branch: new FormControl(null, [Validators.required]),
     password: new FormControl(null, [Validators.required]),
-    passwordConfirm: new FormControl(null, [Validators.required])
-  },
-    // add custom Validators to the form, to make sure that password and passwordConfirm are equal
-    { validators: CustomValidators.passwordsMatching }
-  )
+    confirmPassword: new FormControl(null, [Validators.required]),
+  });
 
-  constructor(
-    private router: Router,
-    private authService: AuthService
-  ) { }
+  constructor(private router: Router, private authService: AuthService) {}
 
   register() {
     if (!this.registerForm.valid) {
       return;
     }
-    this.authService.register(this.registerForm.value).pipe(
-      // If registration was successfull, then navigate to login route
-      tap(() => this.router.navigate(['../login']))
-    ).subscribe();
+    this.authService
+      .register(this.registerForm.value)
+      .pipe(
+        // If registration was successfull, then navigate to login route
+        tap(() => this.router.navigate(['../login']))
+      )
+      .subscribe();
   }
-
 }

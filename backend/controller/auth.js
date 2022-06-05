@@ -2,10 +2,15 @@ const User = require("../models/User");
 
 async function register(req, res) {
   try {
-    const { name, number, email, branch, password, cpassword } = req.body;
+    const { name, number, email, branch, password, confirmPassword } = req.body;
 
-    if (password !== cpassword) {
-      res.json({ ok: false });
+    if (password !== confirmPassword) {
+      return res.json({ ok: false, error: "Password does not match" });
+    }
+
+    const userWithEmail = await User.findOne({ email });
+    if (userWithEmail && email === userWithEmail.email) {
+      throw "User with email already exists";
     }
 
     const user = new User({
@@ -15,25 +20,11 @@ async function register(req, res) {
       branch,
       password,
     });
+    await user.save();
 
-    user.save((error) => {
-      if (error) {
-        return res.json({ ok: false, error });
-      }
-    });
-
-    const userWithEmail = await User.findOne({ email });
-    if (email === userWithEmail.email) {
-      res.render("register", {
-        title: "",
-        password: "",
-        email: "Email is Already there plz chose different one",
-      });
-    } else {
-      console.log("err");
-    }
+    return res.json({ ok: true });
   } catch (error) {
-    res.json({ ok: false, error });
+    return res.json({ ok: false, error });
   }
 }
 

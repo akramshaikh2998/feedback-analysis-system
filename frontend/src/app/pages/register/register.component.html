@@ -19,31 +19,24 @@
         </mat-form-field>
 
         <mat-form-field>
-          <input type="text" matInput placeholder="Username" formControlName="username">
+          <input type="text" matInput placeholder="Name" formControlName="name">
           <mat-error
-            *ngIf="this.registerForm.get('username')?.touched && this.registerForm.get('username')?.hasError('required')">
-            Username is required</mat-error>
+            *ngIf="this.registerForm.get('name')?.touched && this.registerForm.get('name')?.hasError('required')">
+            Name is required</mat-error>
         </mat-form-field>
 
         <mat-form-field>
-          <input type="text" matInput placeholder="First Name" formControlName="firstname">
+          <input type="text" matInput placeholder="Mobile" formControlName="number">
           <mat-error
-            *ngIf="this.registerForm.get('firstname')?.touched && this.registerForm.get('firstname')?.hasError('required')">
-            First Name is required</mat-error>
+            *ngIf="this.registerForm.get('number')?.touched && this.registerForm.get('number')?.hasError('required')">
+            Mobile is required</mat-error>
         </mat-form-field>
 
         <mat-form-field>
-          <input type="text" matInput placeholder="Last Name" formControlName="lastname">
+          <input type="text" matInput placeholder="Branch" formControlName="branch">
           <mat-error
-            *ngIf="this.registerForm.get('lastname')?.touched && this.registerForm.get('lastname')?.hasError('required')">
-            Last Name is required</mat-error>
-        </mat-form-field>
-
-        <mat-form-field>
-          <input type="text" matInput placeholder="Branch Name" formControlName="branchname">
-          <mat-error
-            *ngIf="this.registerForm.get('branchname')?.touched && this.registerForm.get('branchname')?.hasError('required')">
-            Branch Name is required</mat-error>
+            *ngIf="this.registerForm.get('branch')?.touched && this.registerForm.get('branch')?.hasError('required')">
+            Branch is required</mat-error>
         </mat-form-field>
 
         <mat-form-field>
@@ -54,14 +47,14 @@
         </mat-form-field>
 
         <mat-form-field>
-          <input type="password" matInput placeholder="Password Confirmation" formControlName="passwordConfirm">
+          <input type="password" matInput placeholder="Password Confirmation" formControlName="confirmPassword">
           <mat-error
-            *ngIf="this.registerForm.get('passwordConfirm')?.touched && this.registerForm.get('passwordConfirm')?.hasError('required')">
+            *ngIf="this.registerForm.get('confirmPassword')?.touched && this.registerForm.get('confirmPassword')?.hasError('required')">
             Password Confirmation is required</mat-error>
         </mat-form-field>
 
         <mat-error
-          *ngIf="this.registerForm.get('passwordConfirm')?.dirty && this.registerForm.hasError('passwordsNotMatching')">
+          *ngIf="this.registerForm.get('confirmPassword')?.dirty && this.registerForm.hasError('passwordsNotMatching')">
           Passwords are not matching!</mat-error>
 
         <div class="button">

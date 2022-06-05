@@ -4,11 +4,17 @@ import { Injectable } from '@angular/core';
 import { map, Observable, of, switchMap, tap } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { LoginRequest, LoginResponse, RegisterRequest, RegisterResponse } from '../../interfaces';
+import {
+  LoginRequest,
+  LoginResponse,
+  RegisterRequest,
+  RegisterResponse,
+} from '../../interfaces';
 
 export const fakeLoginResponse: LoginResponse = {
   // fakeAccessToken.....should all come from real backend
-  accessToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c',
+  accessToken:
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c',
   refreshToken: {
     id: 1,
     userId: 2,
@@ -16,25 +22,20 @@ export const fakeLoginResponse: LoginResponse = {
     refreshCount: 2,
     expiryDate: new Date(),
   },
-  tokenType: 'JWT'
-}
-
-export const fakeRegisterResponse: RegisterResponse = {
-  status: 200,
-  message: 'Registration sucessfull.'
-}
-
+  tokenType: 'JWT',
+};
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
+  private apiBaseUrl = 'http://localhost:8080';
 
   constructor(
     private http: HttpClient,
     private snackbar: MatSnackBar,
     private jwtService: JwtHelperService
-  ) { }
+  ) {}
 
   /*
    Due to the '/api' the url will be rewritten by the proxy, e.g. to http://localhost:8080/api/auth/login
@@ -45,10 +46,16 @@ export class AuthService {
   */
   login(loginRequest: LoginRequest): Observable<LoginResponse> {
     return of(fakeLoginResponse).pipe(
-      tap((res: LoginResponse) => localStorage.setItem(LOCALSTORAGE_TOKEN_KEY, res.accessToken)),
-      tap(() => this.snackbar.open('Login Successfull', 'Close', {
-        duration: 2000, horizontalPosition: 'right', verticalPosition: 'top'
-      }))
+      tap((res: LoginResponse) =>
+        localStorage.setItem(LOCALSTORAGE_TOKEN_KEY, res.accessToken)
+      ),
+      tap(() =>
+        this.snackbar.open('Login Successfull', 'Close', {
+          duration: 2000,
+          horizontalPosition: 'right',
+          verticalPosition: 'top',
+        })
+      )
     );
     // return this.http.post<LoginResponse>('/api/auth/login', loginRequest).pipe(
     // tap((res: LoginResponse) => localStorage.setItem(LOCALSTORAGE_TOKEN_KEY, res.accessToken)),
@@ -62,17 +69,21 @@ export class AuthService {
    The `..of()..` can be removed if you have a real backend, at the moment, this is just a faked response
   */
   register(registerRequest: RegisterRequest): Observable<RegisterResponse> {
-    // TODO
-    return of(fakeRegisterResponse).pipe(
-      tap((res: RegisterResponse) => this.snackbar.open(`User created successfully`, 'Close', {
-        duration: 2000, horizontalPosition: 'right', verticalPosition: 'top'
-      })),
-    );
-    // return this.http.post<RegisterResponse>('/api/auth/register', registerRequest).pipe(
-    // tap((res: RegisterResponse) => this.snackbar.open(`User created successfully`, 'Close', {
-    //  duration: 2000, horizontalPosition: 'right', verticalPosition: 'top'
-    // }))
-    // )
+    return this.http
+      .post<RegisterResponse>(`${this.apiBaseUrl}/register`, registerRequest)
+      .pipe(
+        tap((res: RegisterResponse) => {
+          let message = 'User created successfully';
+          if (res.error) {
+            message = 'Some error occured';
+          }
+          this.snackbar.open(message, 'Close', {
+            duration: 2000,
+            horizontalPosition: 'right',
+            verticalPosition: 'top',
+          });
+        })
+      );
   }
 
   /*

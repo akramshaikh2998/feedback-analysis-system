@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const auth = require("./routes/auth");
 const port = process.env.port || 8080;
 const { ValidationError } = require("express-validation");
+const cors = require("cors");
 
 const app = express();
 
@@ -29,6 +30,8 @@ mongoose.connect(
     // parse application/json
     app.use(bodyParser.json());
 
+    app.use(cors({ origin: "http://localhost:4200" }));
+
     app.use("/", auth);
 
     app.use(function (err, req, res, next) {
@@ -40,7 +43,7 @@ mongoose.connect(
     });
 
     app.listen(port, () => {
-      console.log("Server is running");
+      console.log(`Server is running on port ${port}`);
     });
   }
 );

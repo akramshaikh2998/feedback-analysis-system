@@ -1,3 +1,4 @@
+const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 
 async function register(req, res) {
@@ -31,13 +32,20 @@ async function register(req, res) {
 async function login(req, res) {
   const { email, password } = req.body;
 
-  User.findOne({ email: email }, (err, result) => {
-    if (email === result.email && password === result.password) {
-      res.render("dashbord", { name: result.name });
-    } else {
-      console.log(err);
-    }
+  const user = await User.findOne({ email });
+  if (!user) {
+    return res.json({ ok: false, error: "User not found" });
+  }
+
+  if (user.password !== password) {
+    return res.json({ ok: false, error: "Incorrect password" });
+  }
+
+  const token = jwt.sign({ user }, process.env.SECRET_KEY, {
+    noTimestamp: true,
   });
+
+  return res.json({ ok: true, token });
 }
 
 module.exports = {

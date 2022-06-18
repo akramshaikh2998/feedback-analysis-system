@@ -10,6 +10,10 @@ Router.post(
   AuthController.register
 );
 
-Router.post("/login", AuthController.login); // TODO: Add middleware for login request
+Router.post(
+  "/login",
+  validate(AuthMiddleware.login(), {}, {}),
+  AuthController.login
+);
 
 module.exports = Router;

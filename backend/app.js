@@ -1,7 +1,9 @@
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const auth = require("./routes/auth");
+const feedback = require("./routes/feedback");
 const port = process.env.port || 8080;
 const { ValidationError } = require("express-validation");
 const cors = require("cors");
@@ -14,6 +16,7 @@ mongoose.connect(
   (error) => {
     if (error) {
       console.log(error);
+      return;
     }
 
     const db = mongoose.connection;
@@ -33,6 +36,7 @@ mongoose.connect(
     app.use(cors({ origin: "http://localhost:4200" }));
 
     app.use("/", auth);
+    app.use("/feedback", feedback);
 
     app.use(function (err, req, res, next) {
       if (err instanceof ValidationError) {

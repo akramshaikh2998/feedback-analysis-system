@@ -1,7 +1,7 @@
-var mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
-var schema = mongoose.Schema;
-var userSchema = new schema({
+const schema = mongoose.Schema;
+const userSchema = new schema({
   name: {
     type: String,
     required: true,
@@ -13,6 +13,10 @@ var userSchema = new schema({
   email: {
     type: String,
     unique: true,
+    required: true,
+  },
+  branch: {
+    type: String,
     required: true,
   },
   password: {
